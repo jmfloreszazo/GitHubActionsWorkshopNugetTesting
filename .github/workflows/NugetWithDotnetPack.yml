@@ -1,7 +1,7 @@
 on: [workflow_dispatch]
 
 jobs:
-  dotnetpack_nugetpush_job:
+  job:
     runs-on: ubuntu-latest
     
     env:
@@ -16,9 +16,9 @@ jobs:
       - uses: actions/checkout@v2.3.4
         
       - name: Setup .NET 5 SDK
-        uses: actions/setup-dotnet@v1.7.2
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.101'
+          dotnet-version: 5.0.x
         
       - name: Restore with dotNet
         run: dotnet restore ${projectpath}
