@@ -1,0 +1,66 @@
+on: [workflow_dispatch]
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    
+    env:
+      packagename: NugetDotnetNuspec
+      projectpath: ./NugetTestingPackage/NugetTestingPackage.csproj
+      nuspecpath: buildout/NugetTestingPackage.nuspec
+      buildconfiguration: release
+      buildoutputpath: buildout
+      pkgoutputpath: packagegout
+      runid: ${{github.run_id}}
+      githubtoken: ${{ secrets.GITHUB_TOKEN }}
+      githubnugetpackageregistry: https://nuget.pkg.github.com/jmfloreszazo/index.json
+      githubrepourl: https://github.com/jmfloreszazo/GitHubActionsWorkshopNugetTesting.git
+    
+    steps:
+      - uses: actions/checkout@v2
+           
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+        
+      - name: Restore
+        run: dotnet restore ${projectpath}
+
+      - name: Build
+        run: dotnet build ${projectpath} --configuration ${buildconfiguration} --output ${buildoutputpath} --version-suffix ${runid} --no-restore
+      
+        
+      - name: Create nuspec file
+        shell: pwsh
+        run: |
+              $nuspec = '<?xml version="1.0"?>
+                         <package >
+                           <metadata>
+                             <id>NugetDotnetNuspec</id>
+                             <version>1.0.0</version>
+                             <authors>Jose Maria Flores Zazo</authors>
+                             <company>JMFLORESZAZO</company>
+                             <description>NuGet package with nuspec</description>
+                             <repository type="git" url="' + $env:githubrepourl + '"></repository>
+                             <dependencies>
+                               <group targetFramework="net5.0" />
+                             </dependencies>
+                           </metadata>
+                           <files>
+                              <file src="*.dll" target="lib\net5.0" />
+                           </files>
+                         </package>';
+               Write-Host $nuspec          
+               $nuspec | out-file $env:nuspecpath -Encoding UTF8
+
+
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v1.0.5
+      
+      - name: nuget pack with nuspec
+        run: nuget pack ${nuspecpath} -BasePath ${buildoutputpath} -OutputDirectory ${pkgoutputpath} -Suffix ${runid}
+
+      - name: Publish
+        run: dotnet nuget push ${pkgoutputpath}/*.nupkg --api-key ${githubtoken} --source ${githubnugetpackageregistry} --skip-duplicate --no-symbols true      
+
