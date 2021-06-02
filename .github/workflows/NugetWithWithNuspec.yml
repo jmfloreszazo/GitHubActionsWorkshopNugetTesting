@@ -40,7 +40,6 @@ jobs:
                              <id>NugetDotnetNuspec</id>
                              <version>1.0.0</version>
                              <authors>Jose Maria Flores Zazo</authors>
-                             <company>JMFLORESZAZO</company>
                              <description>NuGet package with nuspec</description>
                              <repository type="git" url="' + $env:githubrepourl + '"></repository>
                              <dependencies>
