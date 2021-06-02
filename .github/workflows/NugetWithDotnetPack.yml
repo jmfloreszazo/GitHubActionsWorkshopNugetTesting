@@ -15,10 +15,10 @@ jobs:
       githubnugetpackageregistry: https://nuget.pkg.github.com/jmfloreszazo/index.json
     
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
         
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: 5.0.x
         
