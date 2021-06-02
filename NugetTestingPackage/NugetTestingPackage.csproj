@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageId>NugetDotnet</PackageId>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <Authors>Jose Maria Flores Zazo</Authors>
+    <Company>JMFLORESZAZO</Company>
+    <PackageDescription>NuGet package sample with dotnet pack</PackageDescription>
+    <RepositoryUrl>https://github.com/jmfloreszazo/GitHubActionsWorkshopNugetTesting.git</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>

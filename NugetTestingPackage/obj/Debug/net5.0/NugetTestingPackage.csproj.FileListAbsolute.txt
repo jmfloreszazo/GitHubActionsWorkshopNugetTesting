@@ -1,0 +1,12 @@
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\bin\Debug\net5.0\NugetTestingPackage.deps.json
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\bin\Debug\net5.0\NugetTestingPackage.dll
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\bin\Debug\net5.0\ref\NugetTestingPackage.dll
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\bin\Debug\net5.0\NugetTestingPackage.pdb
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\NugetTestingPackage.csprojAssemblyReference.cache
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\NugetTestingPackage.GeneratedMSBuildEditorConfig.editorconfig
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\NugetTestingPackage.AssemblyInfoInputs.cache
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\NugetTestingPackage.AssemblyInfo.cs
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\NugetTestingPackage.csproj.CoreCompileInputs.cache
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\NugetTestingPackage.dll
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\ref\NugetTestingPackage.dll
+C:\temp\GitHubActionsWorkshopNugetTesting\NugetTestingPackage\obj\Debug\net5.0\NugetTestingPackage.pdb

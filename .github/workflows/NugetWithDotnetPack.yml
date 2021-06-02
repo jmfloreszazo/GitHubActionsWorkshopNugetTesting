@@ -1,0 +1,33 @@
+on: [workflow_dispatch]
+
+jobs:
+  dotnetpack_nugetpush_job:
+    runs-on: ubuntu-latest
+    
+    env:
+      projectpath: ./nugettestingpackage/nugettestingpackage.csproj
+      buildconfiguration: release
+      outputpath: packagegout
+      runid: ${{github.run_id}}
+      githubtoken: ${{ secrets.GITHUB_TOKEN }}
+      githubnugetpackageregistry: https://nuget.pkg.github.com/jmfloreszazo/index.json
+    
+    steps:
+      - uses: actions/checkout@v2.3.4
+        
+      - name: Setup .NET 5 SDK
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '5.0.0'
+        
+      - name: Restore with dotNet
+        run: dotnet restore ${projectpath}
+
+      - name: Build with dotNet
+        run: dotnet build ${projectpath} --configuration ${buildconfiguration} --version-suffix ${runid} --no-restore
+        
+      - name: Pack NuGet with dotNet
+        run: dotnet pack ${projectpath} --configuration ${buildconfiguration} --output ${outputpath} --version-suffix ${runid} --no-build --no-restore
+      
+      - name: Publish Nuget to GitHub
+        run: dotnet nuget push ${outputpath}/*.nupkg --api-key ${githubtoken} --source ${githubnugetpackageregistry} --skip-duplicate --no-symbols true
